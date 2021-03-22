@@ -1,0 +1,100 @@
+<!-- Styles -->
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 600px;
+    }
+</style>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+    am4core.ready(function () {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+
+
+        var chart = am4core.create("chartdiv", am4charts.ChordDiagram);
+
+
+        chart.data = [{
+                "from": "11th_Plague",
+                "to": "73muck",
+                "value": 1
+            },
+            {
+                "from": "11th_Plague",
+                "to": "Beast-2",
+                "value": 1
+            },
+            {
+                "from": "11th_Plague",
+                "to": "mrxd15",
+                "value": 83
+            }, {
+                "from": "11th_Plague",
+                "to": "stackofbaconpancakes",
+                "value": 1
+            }, {
+                "from": "11th_Plague",
+                "to": "ttundraa",
+                "value": 1
+            }, {
+                "from": "11th_Plague",
+                "to": "MayorPlow",
+                "value": 1
+            }
+        ]
+
+        chart.dataFields.fromName = "from";
+        chart.dataFields.toName = "to";
+        chart.dataFields.value = "value";
+
+        // make nodes draggable
+        var nodeTemplate = chart.nodes.template;
+        nodeTemplate.readerTitle = "Click to show/hide or drag to rearrange";
+        nodeTemplate.showSystemTooltip = true;
+
+        var label = nodeTemplate.label;
+        label.relativeRotation = 90;
+
+        var nodeLink = chart.links.template;
+        var bullet = nodeLink.bullets.push(new am4charts.CircleBullet());
+        bullet.fillOpacity = 1;
+        bullet.circle.radius = 5;
+        bullet.locationX = 0.5;
+
+        // create animations
+        chart.events.on("ready", function () {
+            for (var i = 0; i < chart.links.length; i++) {
+                var link = chart.links.getIndex(i);
+                var bullet = link.bullets.getIndex(0);
+
+                animateBullet(bullet);
+            }
+        })
+
+        function animateBullet(bullet) {
+            var duration = 3000 * Math.random() + 2000;
+            var animation = bullet.animate([{
+                property: "locationX",
+                from: 0,
+                to: 1
+            }], duration)
+            animation.events.on("animationended", function (event) {
+                animateBullet(event.target.object);
+            })
+        }
+
+    }); // end am4core.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
