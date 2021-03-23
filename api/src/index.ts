@@ -1,4 +1,4 @@
-import {ApplicationConfig, ApiApplication} from './application';
+import { ApplicationConfig, ApiApplication } from './application';
 
 export * from './application';
 
@@ -29,6 +29,9 @@ if (require.main === module) {
       openApiSpec: {
         // useful when used with OpenAPI-to-GraphQL to locate your application
         setServersFromRequest: true,
+      },
+      cors: {
+        origin: ["http://localhost:4200"]
       },
     },
   };

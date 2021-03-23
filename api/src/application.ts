@@ -5,7 +5,7 @@ import {
   RestExplorerComponent,
 } from '@loopback/rest-explorer';
 import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
+import {DefaultSequence, RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
@@ -19,7 +19,7 @@ export class ApiApplication extends BootMixin(
     super(options);
 
     // Set up the custom sequence
-    this.sequence(MySequence);
+    this.sequence(DefaultSequence);
 
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
