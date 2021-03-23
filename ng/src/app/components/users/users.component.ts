@@ -11,11 +11,16 @@ export class UsersComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   commentsInput: any;
+  comments: any;
 
   ngOnInit(): void {
-    this.api.getComments().subscribe((comments: any) => {
-      this.commentsInput = comments;
-      console.log(this.commentsInput);
+    this.api.getComments().subscribe((data: any) => {
+      this.comments = data;
+      this.filterUser("zgh5002");
     })
+  }
+
+  filterUser(user) {
+    this.commentsInput = [...this.comments.filter(x => x.userId == user)];
   }
 }
