@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.api.getComments().subscribe((data: any) => {
       this.comments = data;
-      this.filterUser("zgh5002");
+      this.filterUser("JonnyRichter");
     })
   }
 
