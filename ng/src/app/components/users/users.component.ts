@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -12,15 +15,34 @@ export class UsersComponent implements OnInit {
 
   commentsInput: any;
   comments: any;
+  users: any[];
+  user;
+
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]>;
 
   ngOnInit(): void {
+
     this.api.getComments().subscribe((data: any) => {
       this.comments = data;
-      this.filterUser("JonnyRichter");
+      this.users = [...new Set(data.map(x => x.userId))];
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
     })
+
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.users.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   filterUser(user) {
+    console.log(user);
     this.commentsInput = [...this.comments.filter(x => x.userId == user)];
   }
 }
