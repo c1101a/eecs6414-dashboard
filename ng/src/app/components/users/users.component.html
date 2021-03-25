@@ -1,15 +1,43 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>User</mat-label>
-    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-      [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="filterUser($event.option.value)">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">User Explorer</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<app-emotion-radar [comments]="commentsInput"></app-emotion-radar>
-<app-line-graph [comments]="commentsInput"></app-line-graph>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <form class="example-form float-right mt-1">
+        <mat-form-field class="example-full-width">
+          <mat-label>User</mat-label>
+          <input type="text" placeholder="Select a User" aria-label="Number" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="filterUser($event.option.value)">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid mt-3">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="float-left mt-3">User Explorer</h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <app-emotion-radar [comments]="commentsInput"></app-emotion-radar>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-line-graph [comments]="commentsInput"></app-line-graph>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
