@@ -88,6 +88,8 @@ export class LineGraphComponent implements OnInit {
     createGrid(4, "Surprise");
     createGrid(5, "Joy");
 
+    chart.padding(0, 30, 30, 30);
+
     this.lineChart = chart;
 
     function createGrid(value, emotion) {

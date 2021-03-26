@@ -44,6 +44,7 @@ export class UsersComponent implements OnInit {
   }
 
   filterUser(user) {
-    this.commentsInput = [...this.comments.filter(x => x.userId == user)];
+    this.user = user;
+    this.commentsInput = [...this.comments.filter(x => x.userId == this.user)];
   }
 }

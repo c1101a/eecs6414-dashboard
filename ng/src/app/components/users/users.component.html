@@ -7,7 +7,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <form class="example-form float-right mt-1">
+      <form class="example-form float-right">
         <mat-form-field class="example-full-width">
           <mat-label>User</mat-label>
           <input type="text" placeholder="Select a User" aria-label="Number" matInput [formControl]="myControl"
@@ -25,12 +25,15 @@
 <div class="container-fluid mt-3">
   <div class="card">
     <div class="card-header">
-      <h2 class="float-left mt-3">User Explorer</h2>
+      Emotion Analysis<strong *ngIf="user">: {{user}}</strong>
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
           <app-emotion-radar [comments]="commentsInput"></app-emotion-radar>
+        </div>
+        <div class="col-md-9">
+          <app-stacked-bar [comments]="commentsInput"></app-stacked-bar>
         </div>
       </div>
       <div class="row">
