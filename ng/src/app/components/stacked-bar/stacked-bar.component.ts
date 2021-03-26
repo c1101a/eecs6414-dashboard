@@ -61,7 +61,7 @@ export class StackedBarComponent implements OnInit {
     valueAxis.min = 0;
 
     // Create series
-    function createSeries(field, name) {
+    function createSeries(field, name, color) {
 
       // Set up series
       let series = chart.series.push(new am4charts.ColumnSeries());
@@ -75,8 +75,8 @@ export class StackedBarComponent implements OnInit {
 
       // Configure columns
       series.columns.template.width = am4core.percent(60);
-      // series.columns.template.tooltipText = "[bold]{name}[/]\n[font-size:14px]{categoryX}: {valueY}";
-
+      series.columns.template.tooltipText = "{subreddit} | " + name + ": {valueY}";
+      // series.columns.template.fill = am4core.color(color);
       // Add label
       let labelBullet = series.bullets.push(new am4charts.LabelBullet());
       labelBullet.label.text = "{valueY}";
@@ -86,15 +86,17 @@ export class StackedBarComponent implements OnInit {
       return series;
     }
 
-    createSeries("anger", "Anger");
-    createSeries("sadness", "Sadness");
-    createSeries("fear", "Fear");
-    createSeries("neutral", "Neutral");
-    createSeries("surprise", "Surprise");
-    createSeries("joy", "Joy");
+    createSeries("anger", "Anger", "red");
+    createSeries("sadness", "Sadness", "orange");
+    createSeries("fear", "Fear", "yellow");
+    createSeries("neutral", "Neutral", "green");
+    createSeries("surprise", "Surprise", "purple");
+    createSeries("joy", "Joy", "blue");
 
     // Legend
     chart.legend = new am4charts.Legend();
+
+    chart.padding(0, 50, 30, 50);
 
     this.stackedChart = chart;
 

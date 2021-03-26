@@ -67,6 +67,7 @@ export class EmotionRadarComponent implements OnInit {
     series.dataFields.categoryX = "emotion";
     series.strokeWidth = 3;
 
+    chart.padding(0, 20, 20, 20);
     this.emotionRadarChart = chart;
   }
 
