@@ -15,6 +15,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StackedBarComponent } from './components/stacked-bar/stacked-bar.component';
+import { LolipopChartComponent } from './components/lolipop-chart/lolipop-chart.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { StackedBarComponent } from './components/stacked-bar/stacked-bar.compon
     UsersComponent,
     EmotionRadarComponent,
     LineGraphComponent,
-    StackedBarComponent
+    StackedBarComponent,
+    LolipopChartComponent
   ],
   imports: [
     BrowserModule,
