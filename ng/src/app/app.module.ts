@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StackedBarComponent } from './components/stacked-bar/stacked-bar.component';
 import { LolipopChartComponent } from './components/lolipop-chart/lolipop-chart.component';
+import { UserRadarComponent } from './components/user-radar/user-radar.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LolipopChartComponent } from './components/lolipop-chart/lolipop-chart.
     EmotionRadarComponent,
     LineGraphComponent,
     StackedBarComponent,
-    LolipopChartComponent
+    LolipopChartComponent,
+    UserRadarComponent
   ],
   imports: [
     BrowserModule,
