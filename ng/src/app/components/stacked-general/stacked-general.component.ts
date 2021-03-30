@@ -56,7 +56,7 @@ export class StackedGeneralComponent implements OnInit {
 
   ngAfterViewInit() {
     // Create chart instance
-    let chart = am4core.create("stacked", am4charts.XYChart);
+    let chart = am4core.create("general", am4charts.XYChart);
 
     // Create axes
     let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
