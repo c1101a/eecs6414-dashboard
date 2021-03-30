@@ -76,7 +76,7 @@ export class StackedBarComponent implements OnInit {
       // Configure columns
       series.columns.template.width = am4core.percent(60);
       series.columns.template.tooltipText = "{subreddit} | " + name + ": {valueY}";
-      // series.columns.template.fill = am4core.color(color);
+      series.columns.template.fill = am4core.color(color);
       // Add label
       let labelBullet = series.bullets.push(new am4charts.LabelBullet());
       labelBullet.label.text = "{valueY}";
@@ -86,12 +86,12 @@ export class StackedBarComponent implements OnInit {
       return series;
     }
 
-    createSeries("anger", "Anger", "red");
-    createSeries("sadness", "Sadness", "orange");
-    createSeries("fear", "Fear", "yellow");
-    createSeries("neutral", "Neutral", "green");
-    createSeries("surprise", "Surprise", "purple");
-    createSeries("joy", "Joy", "blue");
+    createSeries("anger", "Anger", "#cc00cc");
+    createSeries("sadness", "Sadness", "#3333ff");
+    createSeries("fear", "Fear", "#009933");
+    createSeries("neutral", "Neutral", "#ffff00");
+    createSeries("surprise", "Surprise", "#ff9900");
+    createSeries("joy", "Joy", "#ff0000");
 
     // Legend
     chart.legend = new am4charts.Legend();
