@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StackedBarComponent } from './components/stacked-bar/stacked-bar.component';
 import { LolipopChartComponent } from './components/lolipop-chart/lolipop-chart.component';
 import { UserRadarComponent } from './components/user-radar/user-radar.component';
+import { StackedGeneralComponent } from './components/stacked-general/stacked-general.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UserRadarComponent } from './components/user-radar/user-radar.component
     LineGraphComponent,
     StackedBarComponent,
     LolipopChartComponent,
-    UserRadarComponent
+    UserRadarComponent,
+    StackedGeneralComponent
   ],
   imports: [
     BrowserModule,

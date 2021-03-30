@@ -55,6 +55,8 @@ export class LolipopChartComponent implements OnInit {
     //categoryAxis.renderer.labels.template.rotation = -90;
     categoryAxis.renderer.labels.template.horizontalCenter = "left";
     categoryAxis.renderer.labels.template.location = 0.5;
+    // categoryAxis.renderer.grid.template.disabled = true;
+    // categoryAxis.renderer.labels.template.disabled = true;
 
     categoryAxis.renderer.labels.template.adapter.add("dy", function (dy, target) {
       return -target.maxRight / 2;
@@ -64,44 +66,49 @@ export class LolipopChartComponent implements OnInit {
     valueAxis.tooltip.disabled = true;
     valueAxis.renderer.ticks.template.disabled = true;
     valueAxis.renderer.axisFills.template.disabled = true;
+    valueAxis.min = -2;
+    valueAxis.max = 2;
+    valueAxis.strictMinMax = true;
+    valueAxis.renderer.grid.template.disabled = true;
+    valueAxis.renderer.labels.template.disabled = true;
 
-    let anger = valueAxis.axisRanges.create();
-    anger.value = -1;
-    anger.endValue = -0.5;
-    anger.axisFill.fill = am4core.color("purple");
-    anger.axisFill.fillOpacity = 0.2;
-    anger.grid.strokeOpacity = 0;
+    // let anger = valueAxis.axisRanges.create();
+    // anger.value = -2;
+    // anger.endValue = -1;
+    // anger.axisFill.fill = am4core.color("purple");
+    // anger.axisFill.fillOpacity = 0.2;
+    // anger.grid.strokeOpacity = 0;
 
     let sadness = valueAxis.axisRanges.create();
-    sadness.value = -0.5;
-    sadness.endValue = 0;
+    sadness.value = -2;
+    sadness.endValue = -1;
     sadness.axisFill.fill = am4core.color("blue");
     sadness.axisFill.fillOpacity = 0.2;
     sadness.grid.strokeOpacity = 0;
 
     let fear = valueAxis.axisRanges.create();
-    fear.value = 0;
-    fear.endValue = 0.5;
+    fear.value = -1;
+    fear.endValue = -0.5;
     fear.axisFill.fill = am4core.color("green");
     fear.axisFill.fillOpacity = 0.2;
     fear.grid.strokeOpacity = 0;
 
     let neutral = valueAxis.axisRanges.create();
-    neutral.value = 0.5;
-    neutral.endValue = 1;
+    neutral.value = -0.5;
+    neutral.endValue = 0;
     neutral.axisFill.fill = am4core.color("yellow");
     neutral.axisFill.fillOpacity = 0.2;
     neutral.grid.strokeOpacity = 0;
 
     let surprise = valueAxis.axisRanges.create();
-    surprise.value = 1;
-    surprise.endValue = 1.5;
+    surprise.value = 0;
+    surprise.endValue = 1;
     surprise.axisFill.fill = am4core.color("orange");
     surprise.axisFill.fillOpacity = 0.2;
     surprise.grid.strokeOpacity = 0;
 
     let joy = valueAxis.axisRanges.create();
-    joy.value = 1.5;
+    joy.value = 1;
     joy.endValue = 2;
     joy.axisFill.fill = am4core.color("red");
     joy.axisFill.fillOpacity = 0.2;
@@ -118,7 +125,12 @@ export class LolipopChartComponent implements OnInit {
     //series.columns.template.width = 0.01;
     //series.tooltip.pointerOrientation = "horizontal";
 
-
+    createGrid(-2, "Anger");
+    createGrid(-1, "Sadness");
+    createGrid(-0.5, "Fear");
+    createGrid(0, "Neutral");
+    createGrid(1, "Surprise");
+    createGrid(2, "Joy");
 
     let bullet = series.bullets.create(am4charts.CircleBullet);
 
@@ -128,6 +140,12 @@ export class LolipopChartComponent implements OnInit {
     chart.scrollbarY = new am4core.Scrollbar();
 
     this.lolipopChart = chart;
+
+    function createGrid(value, emotion) {
+      var range = valueAxis.axisRanges.create();
+      range.value = value;
+      range.label.text = emotion;
+    }
   }
 
 }

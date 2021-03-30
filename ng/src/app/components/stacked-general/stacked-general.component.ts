@@ -8,11 +8,11 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 //am4core.useTheme(am4themes_animated);
 
 @Component({
-  selector: 'app-stacked-bar',
-  templateUrl: './stacked-bar.component.html',
-  styleUrls: ['./stacked-bar.component.css']
+  selector: 'app-stacked-general',
+  templateUrl: './stacked-general.component.html',
+  styleUrls: ['./stacked-general.component.css']
 })
-export class StackedBarComponent implements OnInit {
+export class StackedGeneralComponent implements OnInit {
 
   @Input() comments: any;
 
@@ -27,15 +27,24 @@ export class StackedBarComponent implements OnInit {
       this.data = [];
       this.subreddits = [...new Set(this.comments.map(x => x.subReddit))]
       this.subreddits.forEach(sub => {
-        this.data.push({
-          subreddit: sub,
-          anger: this.comments.filter(x => x.subReddit == sub && x.emotion == 'anger').length,
-          sadness: this.comments.filter(x => x.subReddit == sub && x.emotion == 'sadness').length,
-          fear: this.comments.filter(x => x.subReddit == sub && x.emotion == 'fear').length,
-          neutral: this.comments.filter(x => x.subReddit == sub && x.emotion == 'neutral').length,
-          surprise: this.comments.filter(x => x.subReddit == sub && x.emotion == 'surprise').length,
-          joy: this.comments.filter(x => x.subReddit == sub && x.emotion == 'joy').length,
-        })
+        if ((this.comments.filter(x => x.subReddit == sub && x.emotion == 'anger').length
+          + this.comments.filter(x => x.subReddit == sub && x.emotion == 'sadness').length
+          + this.comments.filter(x => x.subReddit == sub && x.emotion == 'fear').length
+          + this.comments.filter(x => x.subReddit == sub && x.emotion == 'neutral').length
+          + this.comments.filter(x => x.subReddit == sub && x.emotion == 'surprise').length
+          + this.comments.filter(x => x.subReddit == sub && x.emotion == 'joy').length
+        ) > 50) {
+          this.data.push({
+            subreddit: sub,
+            anger: this.comments.filter(x => x.subReddit == sub && x.emotion == 'anger').length,
+            sadness: this.comments.filter(x => x.subReddit == sub && x.emotion == 'sadness').length,
+            fear: this.comments.filter(x => x.subReddit == sub && x.emotion == 'fear').length,
+            neutral: this.comments.filter(x => x.subReddit == sub && x.emotion == 'neutral').length,
+            surprise: this.comments.filter(x => x.subReddit == sub && x.emotion == 'surprise').length,
+            joy: this.comments.filter(x => x.subReddit == sub && x.emotion == 'joy').length,
+          })
+        }
+
       });
 
       this.stackedChart.data = this.data;
