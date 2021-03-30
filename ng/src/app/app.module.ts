@@ -18,6 +18,7 @@ import { StackedBarComponent } from './components/stacked-bar/stacked-bar.compon
 import { LolipopChartComponent } from './components/lolipop-chart/lolipop-chart.component';
 import { UserRadarComponent } from './components/user-radar/user-radar.component';
 import { StackedGeneralComponent } from './components/stacked-general/stacked-general.component';
+import { ChordChartComponent } from './components/chord-chart/chord-chart.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { StackedGeneralComponent } from './components/stacked-general/stacked-ge
     StackedBarComponent,
     LolipopChartComponent,
     UserRadarComponent,
-    StackedGeneralComponent
+    StackedGeneralComponent,
+    ChordChartComponent
   ],
   imports: [
     BrowserModule,

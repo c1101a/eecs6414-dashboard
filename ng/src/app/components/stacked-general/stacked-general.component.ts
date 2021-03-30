@@ -109,6 +109,7 @@ export class StackedGeneralComponent implements OnInit {
 
     chart.scrollbarX = new am4core.Scrollbar();
     //chart.scrollbarY = new am4core.Scrollbar();
+    //chart.cursor = new am4charts.XYCursor();
 
     this.stackedChart = chart;
 

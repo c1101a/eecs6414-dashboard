@@ -15,6 +15,8 @@ export class UsersComponent implements OnInit {
 
   commentsInput: any;
   comments: any;
+  connectionsInput: any;
+  connections: any;
   users: any[];
   user;
 
@@ -36,6 +38,10 @@ export class UsersComponent implements OnInit {
           map(value => this._filter(value))
         );
     })
+
+    this.api.getConnections().subscribe((data: any) => {
+      this.connections = data;
+    })
   }
 
   private _filter(value: string): string[] {
@@ -46,5 +52,6 @@ export class UsersComponent implements OnInit {
   filterUser(user) {
     this.user = user;
     this.commentsInput = [...this.comments.filter(x => x.userId == this.user)];
+    this.connectionsInput = [...this.connections.filter(x => x.fromAuthor == this.user && x.comments > 1)];
   }
 }

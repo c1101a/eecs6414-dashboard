@@ -25,4 +25,16 @@ export class ApiService {
       }`
     )
   }
+
+  public getConnections() {
+    return this.httpClient.get(this.url +
+      `connections?filter={
+        "fields": {
+          "fromAuthor": true,
+          "toAuthor": true,
+          "comments": true
+        }
+      }`
+    )
+  }
 }
