@@ -52,6 +52,6 @@ export class UsersComponent implements OnInit {
   filterUser(user) {
     this.user = user;
     this.commentsInput = [...this.comments.filter(x => x.userId == this.user)];
-    this.connectionsInput = [...this.connections.filter(x => x.fromAuthor == this.user && x.comments > 1)];
+    this.connectionsInput = [...this.connections.filter(x => x.fromAuthor == this.user )];
   }
 }

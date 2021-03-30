@@ -51,8 +51,18 @@ export class ChordChartComponent implements OnInit {
     bullet.circle.radius = 2;
     bullet.locationX = 0.5;
 
+    chart.nodePadding = 0.5;
+    chart.minNodeSize = 0.01;
+    chart.startAngle = 80;
+    chart.endAngle = chart.startAngle + 360;
+    chart.sortBy = "value";
+    chart.fontSize = 10;
+
+    var label = nodeTemplate.label;
+    label.relativeRotation = 90;
+
     // create animations
-    chart.events.on("datavalidated", function () {
+    chart.events.on("hit", function () {
       for (var i = 0; i < chart.links.length; i++) {
         let link = chart.links.getIndex(i);
         let bullet = link.bullets.getIndex(0);
