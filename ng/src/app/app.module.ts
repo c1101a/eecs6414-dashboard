@@ -20,6 +20,7 @@ import { UserRadarComponent } from './components/user-radar/user-radar.component
 import { StackedGeneralComponent } from './components/stacked-general/stacked-general.component';
 import { ChordChartComponent } from './components/chord-chart/chord-chart.component';
 import { TopicScatterComponent } from './components/topic-scatter/topic-scatter.component';
+import { WordCloudComponent } from './components/word-cloud/word-cloud.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { TopicScatterComponent } from './components/topic-scatter/topic-scatter.
     UserRadarComponent,
     StackedGeneralComponent,
     ChordChartComponent,
-    TopicScatterComponent
+    TopicScatterComponent,
+    WordCloudComponent
   ],
   imports: [
     BrowserModule,
