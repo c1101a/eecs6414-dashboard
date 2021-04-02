@@ -50,8 +50,9 @@ export class UsersComponent implements OnInit {
   }
 
   filterUser(user) {
+    this.myControl.setValue(user);
     this.user = user;
     this.commentsInput = [...this.comments.filter(x => x.userId == this.user)];
-    this.connectionsInput = [...this.connections.filter(x => x.fromAuthor == this.user )];
+    this.connectionsInput = [...this.connections.filter(x => x.fromAuthor == this.user)];
   }
 }

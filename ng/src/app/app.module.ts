@@ -21,6 +21,7 @@ import { StackedGeneralComponent } from './components/stacked-general/stacked-ge
 import { ChordChartComponent } from './components/chord-chart/chord-chart.component';
 import { TopicScatterComponent } from './components/topic-scatter/topic-scatter.component';
 import { WordCloudComponent } from './components/word-cloud/word-cloud.component';
+import { UsersStackedBarComponent } from './components/users-stacked-bar/users-stacked-bar.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { WordCloudComponent } from './components/word-cloud/word-cloud.component
     StackedGeneralComponent,
     ChordChartComponent,
     TopicScatterComponent,
-    WordCloudComponent
+    WordCloudComponent,
+    UsersStackedBarComponent
   ],
   imports: [
     BrowserModule,
