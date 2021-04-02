@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private api: ApiService) { }
   comments: any;
+  topics: any;
 
   ngOnInit(): void {
     this.api.getComments().subscribe((data: any) => {
@@ -24,6 +25,9 @@ export class HomeComponent implements OnInit {
         if (a.userId > b.userId) { return -1; }
         return 0;
       })
+    })
+    this.api.getTopics().subscribe((data: any) => {
+      this.topics = data;
     })
   }
 }

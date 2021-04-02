@@ -79,40 +79,19 @@ export class LolipopChartComponent implements OnInit {
     // anger.axisFill.fillOpacity = 0.2;
     // anger.grid.strokeOpacity = 0;
 
-    let sadness = valueAxis.axisRanges.create();
-    sadness.value = -2;
-    sadness.endValue = -1;
-    sadness.axisFill.fill = am4core.color("blue");
-    sadness.axisFill.fillOpacity = 0.2;
-    sadness.grid.strokeOpacity = 0;
+    let gradient = new am4core.LinearGradient();
+    gradient.addColor(am4core.color("blue"));
+    gradient.addColor(am4core.color("green"));
+    gradient.addColor(am4core.color("yellow"));
+    gradient.addColor(am4core.color("orange"));
+    gradient.addColor(am4core.color("red"));
 
-    let fear = valueAxis.axisRanges.create();
-    fear.value = -1;
-    fear.endValue = -0.5;
-    fear.axisFill.fill = am4core.color("green");
-    fear.axisFill.fillOpacity = 0.2;
-    fear.grid.strokeOpacity = 0;
-
-    let neutral = valueAxis.axisRanges.create();
-    neutral.value = -0.5;
-    neutral.endValue = 0;
-    neutral.axisFill.fill = am4core.color("yellow");
-    neutral.axisFill.fillOpacity = 0.2;
-    neutral.grid.strokeOpacity = 0;
-
-    let surprise = valueAxis.axisRanges.create();
-    surprise.value = 0;
-    surprise.endValue = 1;
-    surprise.axisFill.fill = am4core.color("orange");
-    surprise.axisFill.fillOpacity = 0.2;
-    surprise.grid.strokeOpacity = 0;
-
-    let joy = valueAxis.axisRanges.create();
-    joy.value = 1;
-    joy.endValue = 2;
-    joy.axisFill.fill = am4core.color("red");
-    joy.axisFill.fillOpacity = 0.2;
-    joy.grid.strokeOpacity = 0;
+    let range = valueAxis.axisRanges.create();
+    range.value = -3;
+    range.endValue = 3;
+    range.axisFill.fill = gradient;
+    range.axisFill.fillOpacity = 0.2;
+    range.grid.strokeOpacity = 0;
 
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.categoryY = "userId";

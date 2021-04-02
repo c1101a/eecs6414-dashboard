@@ -37,4 +37,16 @@ export class ApiService {
       }`
     )
   }
+
+  public getTopics() {
+    return this.httpClient.get(this.url +
+      `topics?filter={
+        "fields": {
+          "topic": true,
+          "user": true,
+          "total": true
+        }
+      }`
+    )
+  }
 }
