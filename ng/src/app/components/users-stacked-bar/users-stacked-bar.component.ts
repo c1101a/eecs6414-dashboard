@@ -78,7 +78,6 @@ export class UsersStackedBarComponent implements OnInit {
       series.columns.template.fill = am4core.color(color);
 
       series.columns.template.events.on("hit", function (ev: any) {
-        console.log(ev.target.dataItem.dataContext.user);
         emitter.emit(ev.target.dataItem.dataContext.user);
       }, this);
 

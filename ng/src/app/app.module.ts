@@ -22,6 +22,8 @@ import { ChordChartComponent } from './components/chord-chart/chord-chart.compon
 import { TopicScatterComponent } from './components/topic-scatter/topic-scatter.component';
 import { WordCloudComponent } from './components/word-cloud/word-cloud.component';
 import { UsersStackedBarComponent } from './components/users-stacked-bar/users-stacked-bar.component';
+import { BarRaceComponent } from './components/bar-race/bar-race.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { UsersStackedBarComponent } from './components/users-stacked-bar/users-s
     ChordChartComponent,
     TopicScatterComponent,
     WordCloudComponent,
-    UsersStackedBarComponent
+    UsersStackedBarComponent,
+    BarRaceComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,

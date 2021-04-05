@@ -19,11 +19,17 @@ export class UsersComponent implements OnInit {
   connections: any;
   users: any[];
   user;
+  topics: any;
+  filteredTopics: any;
 
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
 
   ngOnInit(): void {
+    this.api.getTopics().subscribe(t => {
+      this.topics = t;
+    })
+
     this.api.getComments().subscribe((data: any) => {
       this.comments = data;
       this.users = [...new Set(data.map(x => x.userId))];
@@ -53,6 +59,7 @@ export class UsersComponent implements OnInit {
     this.myControl.setValue(user);
     this.user = user;
     this.commentsInput = [...this.comments.filter(x => x.userId == this.user)];
+    this.filteredTopics = [...this.topics.filter(x => x.user == this.user)];
     this.connectionsInput = [...this.connections.filter(x => x.fromAuthor == this.user)];
   }
 }

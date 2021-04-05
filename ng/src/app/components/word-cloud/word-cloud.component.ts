@@ -33,7 +33,7 @@ export class WordCloudComponent implements OnInit {
       series.step = 15;
       series.rotationThreshold = 0.7;
       series.minValue = 2;
-      series.maxCount = 200;
+      series.maxCount = 100;
       series.minWordLength = 2;
       series.labels.template.tooltipText = "{word}: {value}";
       series.fontFamily = "Courier New";

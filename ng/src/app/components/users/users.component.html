@@ -70,6 +70,8 @@
           <app-chord-chart [connections]="connectionsInput"></app-chord-chart>
         </div>
         <div class="col-md-6">
+          <span *ngFor="let topic of filteredTopics" class="badge badge-primary mr-3">{{topic.topic}}</span>
+          <hr>
           <app-word-cloud [comments]="commentsInput"></app-word-cloud>
         </div>
       </div>

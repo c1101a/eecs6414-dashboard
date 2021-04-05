@@ -8,6 +8,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
   </div>
 </nav>
+<!-- <div class="container-fluid mt-3">
+  <div class="card">
+    <div class="card-header">
+      Emotion Timeline </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <app-bar-race [comments]="comments"></app-bar-race>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 <div class="container-fluid mt-3">
   <div class="card">
     <div class="card-header">
@@ -38,11 +51,14 @@
 <div class="container-fluid mt-3">
   <div class="card">
     <div class="card-header">
-      Topics</div>
+      Topics and Emotions</div>
     <div class="card-body">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <app-topic-scatter [topics]="topics"></app-topic-scatter>
+        </div>
+        <div class="col-md-6">
+          <app-pie-chart [comments]="comments"></app-pie-chart>
         </div>
       </div>
     </div>
