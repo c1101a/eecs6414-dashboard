@@ -80,11 +80,12 @@ export class LolipopChartComponent implements OnInit {
     // anger.grid.strokeOpacity = 0;
 
     let gradient = new am4core.LinearGradient();
-    gradient.addColor(am4core.color("blue"));
-    gradient.addColor(am4core.color("green"));
-    gradient.addColor(am4core.color("yellow"));
-    gradient.addColor(am4core.color("orange"));
     gradient.addColor(am4core.color("red"));
+    gradient.addColor(am4core.color("purple"));
+    gradient.addColor(am4core.color("blue"));
+    gradient.addColor(am4core.color("teal"));
+    gradient.addColor(am4core.color("yellow"));
+    gradient.addColor(am4core.color("green"));
 
     let range = valueAxis.axisRanges.create();
     range.value = -3;

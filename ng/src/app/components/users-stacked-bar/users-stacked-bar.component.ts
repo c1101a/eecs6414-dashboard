@@ -90,12 +90,12 @@ export class UsersStackedBarComponent implements OnInit {
       return series;
     }
 
-    createSeries("anger", "Anger", "#cc00cc", this.filterUser);
-    createSeries("sadness", "Sadness", "#3333ff", this.filterUser);
-    createSeries("fear", "Fear", "#009933", this.filterUser);
-    createSeries("neutral", "Neutral", "#ffff00", this.filterUser);
-    createSeries("surprise", "Surprise", "#ff9900", this.filterUser);
-    createSeries("joy", "Joy", "#ff0000", this.filterUser);
+    createSeries("anger", "Anger", "#f54242", this.filterUser);
+    createSeries("sadness", "Sadness", "#f542ec", this.filterUser);
+    createSeries("fear", "Fear", "#425af5", this.filterUser);
+    createSeries("neutral", "Neutral", "#42bff5", this.filterUser);
+    createSeries("surprise", "Surprise", "#f5ec42", this.filterUser);
+    createSeries("joy", "Joy", "#42f548", this.filterUser);
 
     // Legend
     chart.legend = new am4charts.Legend();

@@ -26,32 +26,32 @@ export class PieChartComponent implements OnInit {
         {
           emotion: "Anger",
           count: this.comments.filter(x => x.emotion == "anger").length,
-          color: "#cc00cc"
+          color: "#f54242"
         },
         {
           emotion: "Sadness",
           count: this.comments.filter(x => x.emotion == "sadness").length,
-          color: "#3333ff"
+          color: "#f542ec"
         },
         {
           emotion: "Fear",
           count: this.comments.filter(x => x.emotion == "fear").length,
-          color: "#009933"
+          color: "#425af5"
         },
         {
           emotion: "Neutral",
           count: this.comments.filter(x => x.emotion == "neutral").length,
-          color: "#ffff00"
+          color: "#42bff5"
         },
         {
           emotion: "Surprise",
           count: this.comments.filter(x => x.emotion == "surprise").length,
-          color: "#ff9900"
+          color: "#f5ec42"
         },
         {
           emotion: "Joy",
           count: this.comments.filter(x => x.emotion == "joy").length,
-          color: "#ff0000"
+          color: "#42f548"
         },
       ];
       console.log(this.pieChart.data)

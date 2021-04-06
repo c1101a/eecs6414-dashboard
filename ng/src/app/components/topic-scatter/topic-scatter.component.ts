@@ -83,11 +83,12 @@ export class TopicScatterComponent implements OnInit {
     // yAxis.strictMinMax = true;
 
     let gradient = new am4core.RadialGradient();
-    gradient.addColor(am4core.color("blue"));
-    gradient.addColor(am4core.color("green"));
-    gradient.addColor(am4core.color("yellow"));
-    gradient.addColor(am4core.color("orange"));
     gradient.addColor(am4core.color("red"));
+    gradient.addColor(am4core.color("purple"));
+    gradient.addColor(am4core.color("blue"));
+    gradient.addColor(am4core.color("teal"));
+    gradient.addColor(am4core.color("yellow"));
+    gradient.addColor(am4core.color("green"));
 
     let range = yAxis.axisRanges.create();
     range.value = -3;

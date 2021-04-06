@@ -95,12 +95,12 @@ export class StackedGeneralComponent implements OnInit {
       return series;
     }
 
-    createSeries("anger", "Anger", "#cc00cc");
-    createSeries("sadness", "Sadness", "#3333ff");
-    createSeries("fear", "Fear", "#009933");
-    createSeries("neutral", "Neutral", "#ffff00");
-    createSeries("surprise", "Surprise", "#ff9900");
-    createSeries("joy", "Joy", "#ff0000");
+    createSeries("anger", "Anger", "#f54242");
+    createSeries("sadness", "Sadness", "#f542ec");
+    createSeries("fear", "Fear", "#425af5");
+    createSeries("neutral", "Neutral", "#42bff5");
+    createSeries("surprise", "Surprise", "#f5ec42");
+    createSeries("joy", "Joy", "#42f548");
 
     // Legend
     chart.legend = new am4charts.Legend();
