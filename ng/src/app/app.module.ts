@@ -24,6 +24,7 @@ import { WordCloudComponent } from './components/word-cloud/word-cloud.component
 import { UsersStackedBarComponent } from './components/users-stacked-bar/users-stacked-bar.component';
 import { BarRaceComponent } from './components/bar-race/bar-race.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { SubredditRadarComponent } from './components/subreddit-radar/subreddit-radar.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     WordCloudComponent,
     UsersStackedBarComponent,
     BarRaceComponent,
-    PieChartComponent
+    PieChartComponent,
+    SubredditRadarComponent
   ],
   imports: [
     BrowserModule,
