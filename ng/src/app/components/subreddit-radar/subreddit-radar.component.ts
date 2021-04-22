@@ -24,6 +24,9 @@ export class SubredditRadarComponent implements OnInit {
   constructor() { }
 
   private topicsScatter: am4charts.RadarChart;
+  private interestScatter: am4charts.RadarChart;
+  private subredditRadar: am4charts.RadarChart;
+
 
 
   cosinesim(A, B) {
@@ -43,7 +46,29 @@ export class SubredditRadarComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && this.data) {
-      let subreddit = this.data.filter(x => x.subReddit == 'teenagers')
+      let subreddit = this.data.filter(x => x.subReddit == 'nfl')
+
+
+      this.subredditRadar.data = [{
+        "emotion": "Anger",
+        "value": subreddit.filter(x => x.emotion == 'anger').length
+      }, {
+        "emotion": "Sadness",
+        "value": subreddit.filter(x => x.emotion == 'sadness').length
+      }, {
+        "emotion": "Fear",
+        "value": subreddit.filter(x => x.emotion == 'fear').length
+      }, {
+        "emotion": "Neutral",
+        "value": subreddit.filter(x => x.emotion == 'neutral').length
+      }, {
+        "emotion": "Surprise",
+        "value": subreddit.filter(x => x.emotion == 'surprise').length
+      }, {
+        "emotion": "Joy",
+        "value": subreddit.filter(x => x.emotion == 'joy').length
+      }];
+
       let subRedditVector = [
         subreddit.filter(x => x.emotion == 'joy').length / subreddit.length,
         subreddit.filter(x => x.emotion == 'surprise').length / subreddit.length,
@@ -66,11 +91,11 @@ export class SubredditRadarComponent implements OnInit {
         this.scatterData.push({
           cosim: this.cosinesim(subRedditVector, userVector),
           user: user,
-          random: Math.floor(Math.random() * 100 + 1)
+          random: Math.floor(Math.random() * 100 + 1),
+          score: this.cosinesim(subRedditVector, userVector) * subreddit.filter(x => x.userId == user).length
         });
       });
 
-      console.log(this.scatterData);
       /* Create and configure series */
       function createSeries(user, chart, data) {
         let series1 = chart.series.push(new am4charts.RadarSeries());
@@ -88,9 +113,26 @@ export class SubredditRadarComponent implements OnInit {
         return series1;
       }
 
+      function createSeriesInterest(user, chart, data) {
+        let series2 = chart.series.push(new am4charts.RadarSeries());
+        // series1.bullets.push(new am4charts.CircleBullet());
+        series2.strokeOpacity = 0;
+        series2.dataFields.valueX = "random";
+        series2.dataFields.valueY = "score";
+        series2.name = user;
+        series2.sequencedInterpolation = true;
+        series2.sequencedInterpolationDelay = 10;
+        series2.data = data.filter(x => x.user == user);
+        let bullet1 = series2.bullets.push(new am4charts.CircleBullet());
+        bullet1.tooltipText = user + "\n Score: {score}";
+
+        return series2;
+      }
+
 
       [...new Set(this.scatterData.map(x => x.user))].forEach(u => {
         createSeries(u, this.topicsScatter, this.scatterData);
+        createSeriesInterest(u, this.interestScatter, this.scatterData);
       });
 
     }
@@ -128,6 +170,57 @@ export class SubredditRadarComponent implements OnInit {
     //chart.cursor = new am4charts.RadarCursor();
 
     this.topicsScatter = chart;
+
+    /**
+     * Interest
+     */
+    let interest = am4core.create("interest", am4charts.RadarChart);
+
+    /* Create axes */
+    let xAxisI = interest.xAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererCircular>());
+    //xAxis.renderer.maxLabelPosition = 0.99;
+    xAxisI.renderer.grid.template.disabled = true;
+    xAxisI.renderer.labels.template.disabled = true;
+
+    let yAxisI = interest.yAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererRadial>());
+    yAxisI.renderer.labels.template.verticalCenter = "bottom";
+    yAxisI.renderer.labels.template.horizontalCenter = "right";
+    yAxisI.renderer.maxLabelPosition = 0.99;
+    yAxisI.renderer.labels.template.paddingBottom = 1;
+    yAxisI.renderer.labels.template.paddingRight = 3;
+    yAxisI.renderer.inversed = true;
+    // yAxis.renderer.grid.template.disabled = true;
+    // yAxis.renderer.labels.template.disabled = true;
+    //yAxis.min = -2;
+    // yAxis.max = 3;
+    // yAxis.strictMinMax = true;
+
+    /* Add legend */
+    interest.legend = new am4charts.Legend();
+
+    /* Add cursor */
+    //chart.cursor = new am4charts.RadarCursor();
+
+    this.interestScatter = interest;
+
+    let radar = am4core.create("radar", am4charts.RadarChart);
+
+    /* Create axes */
+    let categoryAxis = radar.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
+    categoryAxis.dataFields.category = "emotion";
+
+    let valueAxis = radar.yAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererRadial>());
+    valueAxis.renderer.axisFills.template.fill = radar.colors.getIndex(2);
+    valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+
+    /* Create and configure series */
+    let series = radar.series.push(new am4charts.RadarSeries());
+    series.dataFields.valueY = "value";
+    series.dataFields.categoryX = "emotion";
+    series.strokeWidth = 3;
+
+    radar.padding(0, 20, 20, 20);
+    this.subredditRadar = radar;
   }
 
 }
